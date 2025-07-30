@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/style_home.css" />
+    <link rel="stylesheet" href="../src/service_home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap"
+      rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../src/output.css" />
+    <!-- <link rel="stylesheet" href="../src/report_home.css" /> -->
+    <!-- <link rel="stylesheet" href="feedBack.css" /> -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {},
+            fontFamily: {
+              sans: ["Open Sans", "Noto Kufi Arabic", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  
+
+  <body>
+    <special-header></special-header>
+
+    <!-- Fixed Top Corner Buttons -->
+    <div class="fixed top-6 right-6 z-50 flex space-x-3">
+      <!-- Profile Button -->
+      <button
+        id="profileButton"
+        class="w-12 h-12 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:scale-105"
+        aria-label="Profile"
+      >
+        <svg
+          class="w-6 h-6 text-gray-700 dark:text-gray-300 transition-colors group-hover:text-[#CEB579] dark:group-hover:text-yellow-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+
+      <!-- Dark Mode Toggle Button -->
+      <button
+        id="darkModeToggle"
+        class="w-12 h-12 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:scale-105"
+        aria-label="Toggle dark mode"
+      >
+        <!-- Sun icon (visible in dark mode) -->
+        <svg
+          class="w-6 h-6 text-yellow-500 dark:block hidden transition-transform group-hover:rotate-12"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <!-- Moon icon (visible in light mode) -->
+        <svg
+          class="w-6 h-6 text-gray-700 dark:hidden block transition-transform group-hover:-rotate-12"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+      </button>
+    </div>
+
+    <section class="banner w-full h-[100vh] relative" id="banner">
+<div class="absolute inset-0 w-full h-full">
+  <img
+    src="Images/hand.jpg"
+    alt="background"
+    class="w-full h-full object-cover"
+  />
+  <!-- Dark overlay for better text readability -->
+  <div class="banner-overlay absolute inset-0"></div>
+</div>
+
+      
+<div class="banner-text w-full h-full absolute flex flex-row-reverse justify-between items-end text-white relative z-10">
+        <div class="banner-right-button text-lg sm:mx-16 sm:mb-10">
+          <a href="../signin&signup/signin&signup.html">Sign UP</a>
+        </div>
+        <div class="mouse_down mx-16 mb-10 sm:flex hidden">
+          <div class="mouse-icon">
+            <svg
+              width="19"
+              height="30"
+              viewBox="0 0 19 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M16.875 20.625V9.375C16.875 7.38588 16.0848 5.47822 14.6783 4.0717C13.2718 2.66518 11.3641 1.875 9.375 1.875C7.38588 1.875 5.47822 2.66518 4.0717 4.0717C2.66518 5.47822 1.875 7.38588 1.875 9.375V20.625C1.875 22.6141 2.66518 24.5218 4.0717 25.9283C5.47822 27.3348 7.38588 28.125 9.375 28.125C11.3641 28.125 13.2718 27.3348 14.6783 25.9283C16.0848 24.5218 16.875 22.6141 16.875 20.625ZM9.375 0C6.8886 0 4.50403 0.98772 2.74587 2.74587C0.98772 4.50403 0 6.8886 0 9.375V20.625C0 23.1114 0.98772 25.496 2.74587 27.2541C4.50403 29.0123 6.8886 30 9.375 30C11.8614 30 14.246 29.0123 16.0041 27.2541C17.7623 25.496 18.75 23.1114 18.75 20.625V9.375C18.75 6.8886 17.7623 4.50403 16.0041 2.74587C14.246 0.98772 11.8614 0 9.375 0Z"
+                fill="white"
+                class="mouse"></path>
+              <path
+                d="M10.0379 7.39959C9.8621 7.22377 9.62364 7.125 9.375 7.125C9.12636 7.125 8.8879 7.22377 8.71209 7.39959C8.53627 7.5754 8.4375 7.81386 8.4375 8.0625V11.8125C8.4375 12.0611 8.53627 12.2996 8.71209 12.4754C8.8879 12.6512 9.12636 12.75 9.375 12.75C9.62364 12.75 9.8621 12.6512 10.0379 12.4754C10.2137 12.2996 10.3125 12.0611 10.3125 11.8125V8.0625C10.3125 7.81386 10.2137 7.5754 10.0379 7.39959Z"
+                fill="white"
+                class="cursor"></path>
+            </svg>
+            <p class="text-white text-[10px] relative right-7 mt-2 w-24">
+              SCROOL DOWN
+            </p>
+          </div>
+        </div>
+        
+    <div
+  class="text-left w-[510px] sm:ml-16 ml-10 sm:mb-10 relative sm:bottom-0 bottom-[100px]">
+  <p class="sm:text-2xl mb-5">
+    Welcome to RieayaPlus !
+  </p>
+  <p class="text-sm">
+    Your companion for a safer, healthier, and happier life.
+  </p>
+</div>
+
+      </div>
+    </section>
+  
+  <section class="from_our_seniors" id="services">
+    <!-- <div class="h-28 md:h-0"></div> -->
+  <h1 class="sevicesAnimation m-20 text-center text-4xl service_title animate__animated animate__backInUp animate__delay-0.5s">
+  from our seniors
+</h1>
+
+
+
+    <div class="owl-carousel owl-theme ">
+      <div class="card">
+        <div class="slide slide1">
+          <div class="content">
+            <div class="item">
+              <div class=" w-[300px] h-full p-4 flex flex-col items-center justify-center">
+              
+                <a class="text-xl text-center" href="./water_service.html">"This app has truly made my days easier. I feel more at ease knowing I won’t forget my medicine." </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide slide2">
+          <div class="content">
+            <p>– Samira Al-Fayez, 68 years old</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slide slide1">
+          <div class="content">
+            <div class="item">
+              <div class=" w-[300px] h-full p-4 flex flex-col items-center justify-center">
+                <a class="text-xl text-center" href="./agriculture_service.html">"I never thought something so simple could bring so much comfort. It really makes me feel cared for."</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide slide2">
+          <div class="content">
+            <p> – Ahmed Al-Khalil, 72 years old</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slide slide1">
+          <div class="content">
+            <div class="item">
+              <div class=" w-[300px] h-full p-4 flex flex-col items-center justify-center">
+                <a class="text-xl text-center" href="./Energy&electricity_services.html">"I used to worry about missing doctor visits, but now I feel supported and in control."</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide slide2">
+          <div class="content">
+            <p>– Mariam Al-Jamil, 80 years old</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slide slide1">
+          <div class="content">
+            <div class="item">
+              <div class=" w-[300px] h-full p-4 flex flex-col items-center justify-center">
+                
+                <a class="text-xl text-center" href="./publics_services.html">"The gentle reminders and activities give me a sense of routine and joy. It feels like someone’s always looking out for me."</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide slide2">
+          <div class="content">
+            <p> – Youssef Al-Mansour, 77 years old</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slide slide1">
+          <div class="content">
+            <div class="item">
+              <div class=" w-[300px] h-full p-4 flex flex-col items-center justify-center">
+                <a class="text-xl text-center" href="./traffic_department.html"> "Having someone remind me to take my medication and check in on me makes me feel safe and cared for every day."</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide slide2">
+          <div class="content">
+            <p>  — Fatima Al-Husseini, 72 years old</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+<section class="Medication_Reminder">
+  <!-- العنوان -->
+  <h1 class="sevicesAnimation m-10 text-center text-4xl font-bold animate__animated animate__backInUp animate__delay-0.5s">
+    Medication Reminder
+  </h1>
+
+  <!-- الزرين -->
+  <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto mt-6">
+    <!-- زر إضافة -->
+    <button class="bg-pink-500 hover:bg-pink-600 text-white font-medium text-sm px-5 py-2 rounded-md transition w-52" onclick="document.getElementById('addMedicationModal').showModal()">
+      Add New Medication
+    </button>
+
+    <!-- زر QR -->
+    <button onclick="openImageOptions()" class="bg-gray-700 hover:bg-gray-800 text-white font-medium text-sm px-5 py-2 rounded-md flex items-center justify-center gap-2 transition w-52">
+      <i class="fas fa-qrcode text-sm"></i> Add via QR Code
+    </button>
+    <input type="file" id="qrInput" accept="image/*" style="display:none" capture="environment" onchange="handleImage(this)">
+  </div>
+
+  <!-- جدول الأدوية -->
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-10">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th class="px-6 py-3">Medicine Name</th>
+          <th class="px-6 py-3">Dosage</th>
+          <th class="px-6 py-3">Medicine Time</th>
+          <th class="px-6 py-3">Before/After Eating</th>
+          <th class="px-6 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tbod">
+      <tr class="bg-white border-b hover:bg-gray-50">
+  <td class="px-6 py-4 font-medium text-gray-900">Panadol</td>
+  <td class="px-6 py-4">500mg</td>
+  <td class="px-6 py-4">19:36, 12:36</td>
+  <td class="px-6 py-4">after</td>
+  <td class="px-6 py-4">
+    <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs delete-button">Delete</button>
+  </td>
+</tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal Tailwind (HTML5 <dialog>) -->
+  <dialog id="addMedicationModal" class="rounded-lg p-6 w-full max-w-md mx-auto border border-gray-300 shadow-xl">
+    <h2 class="text-xl font-semibold mb-4">Add New Medication</h2>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Medicine Name</label>
+        <input type="text" id="MedicineName" class="w-full border rounded px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Dosage</label>
+        <input type="text" id="dosage" class="w-full border rounded px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Before/After Eating</label>
+        <input type="text" id="baEating" class="w-full border rounded px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Medicine Time</label>
+        <div id="time-fields" class="space-y-2">
+          <input type="time" name="medicinetime[]" class="w-full border rounded px-3 py-2 text-sm" />
+        </div>
+        <button type="button" onclick="addTimeSelect()" class="text-blue-600 mt-2 text-sm hover:underline">+ Add More Time</button>
+      </div>
+    </div>
+
+    <div class="mt-6 flex justify-end gap-3">
+      <button onclick="document.getElementById('addMedicationModal').close()" class="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded text-sm">Close</button>
+      <button id="saveData" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">Save</button>
+    </div>
+  </dialog>
+
+  <!-- مكان التنبيهات -->
+<!-- هذا القسم فوق كروت المواعيد -->
+<div class="col-span-full flex justify-start ml-10" id="alertContainerWrapper">
+  <div id="alertContainer"></div>
+</div>
+</section>
+<section class="Appointments_Reminder">
+    <h1 class="sevicesAnimation m-10 text-center text-4xl font-bold animate__animated animate__backInUp animate__delay-0.5s">
+  Appointments Reminder
+  </h1>
+<!-- زر فتح المودال -->
+<div class="text-center my-6">
+  <button onclick="document.getElementById('appointmentModal').showModal()"
+    class="bg-pink-500 hover:bg-pink-600 text-white font-medium px-5 py-2 rounded-md transition">
+    Add New Appointment
+  </button>
+</div>
+
+<!-- container للكروت مع scroll -->
+<div id="cardBod" class="flex gap-6 overflow-x-auto px-4 pb-4">
+  <!-- الكروت بتظهر هون -->
+</div>
+
+<!-- المودال (Tailwind Modal) -->
+<dialog id="appointmentModal" class="rounded-lg p-0 w-full max-w-md shadow-lg backdrop:bg-black/50">
+  <form method="dialog" class="p-6 space-y-4">
+    <h2 class="text-xl font-bold mb-2">Add Appointment</h2>
+
+    <div>
+      <label class="block mb-1">Appointment Name</label>
+      <input type="text" id="appointmentName"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none" />
+      <p id="errName" class="text-red-500 text-sm mt-1 hidden">Name is required</p>
+    </div>
+
+    <div>
+      <label class="block mb-1">Appointment Address</label>
+      <input type="text" id="appointmentAddress"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none" />
+      <p id="errAddress" class="text-red-500 text-sm mt-1 hidden">Address is required</p>
+    </div>
+
+    <div>
+      <label class="block mb-1">Appointment Date</label>
+      <input type="date" id="appointmentDate"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none" />
+      <p id="errDate" class="text-red-500 text-sm mt-1 hidden">Date is required</p>
+    </div>
+
+    <div>
+      <label class="block mb-1">Appointment Time</label>
+      <input type="time" id="appointmentTime"
+        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none" />
+      <p id="errTime" class="text-red-500 text-sm mt-1 hidden">Time is required</p>
+    </div>
+
+    <div class="flex justify-end gap-2 pt-4">
+      <button type="button" onclick="document.getElementById('appointmentModal').close()"
+        class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">Cancel</button>
+      <button type="button" onclick="saveAppointment()"
+        class="px-4 py-2 rounded bg-pink-500 text-white hover:bg-pink-600">Save</button>
+    </div>
+  </form>
+</dialog>
+
+
+</section>
+  <div class="footer">
+      <div class="container">
+        <img src="images/logo.png" alt="logo">
+        <p>We Are Social</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fa-solid fa-house"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <p class="copyright">&copy; 2025 <span>RieayaPlus</span> All Rigth Reserved</p>
+      </div>
+    </div>
+    <script src="./template_home.js"></script>
+     <script src="./service_home.js"></script>
+    <!-- <script src="./report_home.js"></script>  -->
+    <!-- <script src="./contact.js"></script> -->
+    
+    <!-- Dark Mode and Profile Toggle Script -->
+    <script>
+      // Dark mode toggle functionality
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const profileButton = document.getElementById('profileButton');
+      const htmlElement = document.documentElement;
+      
+      // Check for saved dark mode preference or default to light mode
+      const savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlElement.classList.add('dark');
+      }
+      
+      darkModeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        
+        // Save preference to localStorage
+        if (htmlElement.classList.contains('dark')) {
+          localStorage.setItem('darkMode', 'dark');
+        } else {
+          localStorage.setItem('darkMode', 'light');
+        }
+      });
+
+      // Profile button functionality (placeholder for future implementation)
+      profileButton.addEventListener('click', () => {
+        // This can be connected to profile page navigation later
+        console.log('Profile button clicked - ready for profile page integration');
+        // Example: window.location.href = '/profile';
+      });
+    </script>
+    
+    <script>
+      const contactForm = document.getElementById("contactForm");
+      const successPopup = document.getElementById("successPopup");
+      const closePopupBtn = document.getElementById("closePopupBtn");
+
+      // Input fields
+      // const nationalIdInput = document.getElementById("userId");
+      const phoneInput = document.getElementById("userPhone");
+      const locationInput = document.getElementById("userLocation");
+      const sectorInput = document.getElementById("userSector");
+      const commentInput = document.getElementById("userComment");
+
+      // Error message placeholders
+      // const nationalIdError = document.getElementById("userIdError");
+      const phoneError = document.getElementById("userPhoneError");
+      const locationError = document.getElementById("userLocationError");
+      const sectorError = document.getElementById("userSectorError");
+      const commentError = document.getElementById("userCommentError");
+
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let formIsValid = true;
+
+        // Helper function to set field as invalid
+        function setInvalid(inputElement, errorElement, errorMessage) {
+          // Add a prominent red border. Remove any existing border classes first if necessary.
+          inputElement.classList.remove("border-gray-300"); // If it had a default border
+          inputElement.classList.add("border-2", "border-red-500");
+          if (errorElement) errorElement.textContent = errorMessage;
+          formIsValid = false;
+        }
+
+        // Helper function to set field as valid
+        function setValid(inputElement, errorElement) {
+          inputElement.classList.remove("border-2", "border-red-500");
+          // Optionally add back a default border if your original design had one and it got removed
+          // inputElement.classList.add('border-gray-300'); // Or remove if not needed
+          if (errorElement) errorElement.textContent = "";
+        }
+
+        // --- Validation Checks ---
+
+        if (!locationInput.value.trim()) {
+          setInvalid(locationInput, locationError, "الرجاء إدخال الموقع.");
+        } else {
+          setValid(locationInput, locationError);
+        }
+
+        if (!sectorInput.value) {
+          setInvalid(sectorInput, sectorError, "الرجاء اختيار القطاع.");
+        } else {
+          setValid(sectorInput, sectorError);
+        }
+
+        if (!commentInput.value.trim()) {
+          setInvalid(
+            commentInput,
+            commentError,
+            "الرجاء كتابة اقتراحك أو تعليقك."
+          );
+        } else if (commentInput.value.trim().length < 10) {
+          setInvalid(
+            commentInput,
+            commentError,
+            "يجب أن يكون التعليق 10 أحرف على الأقل."
+          );
+        } else {
+          setValid(commentInput, commentError);
+        }
+
+        if (formIsValid) {
+          console.log("✅ Form is valid. Showing success popup.");
+          successPopup.classList.remove("hidden");
+          successPopup.classList.add("flex");
+          contactForm.reset();
+
+          [
+            nationalIdInput,
+            phoneInput,
+            locationInput,
+            sectorInput,
+            commentInput,
+          ].forEach((input) => {
+            const errorEl = document.getElementById(input.id + "Error");
+            setValid(input, errorEl);
+          });
+        } else {
+          console.log("❌ Form is invalid. Please fix the highlighted fields.");
+        }
+      });
+
+      closePopupBtn.addEventListener("click", () => {
+        successPopup.classList.add("hidden");
+        successPopup.classList.remove("flex");
+      });
+
+      successPopup.addEventListener("click", (e) => {
+        if (e.target === successPopup) {
+          successPopup.classList.add("hidden");
+          successPopup.classList.remove("flex");
+        }
+      });
+    </script>
+
+    <script>
+      // use a script tag or an external JS file
+      document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils
+          .toArray([
+            ".sevicesAnimation",
+            ".reportsAnimation",
+            ".myReportsAnimation",
+            ".tendersAnimation",
+            ".feedbacksAnimation",
+            ".achievementsAnimation",
+          ])
+          .forEach((element) => {
+            gsap.fromTo(
+              element,
+              {
+                y: 100,
+                opacity: 0,
+              },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                scrollTrigger: {
+                  trigger: element,
+                  start: "top 80%",
+                  once: true,
+                },
+              }
+            );
+          });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+           <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    
+<script>
+  $(document).ready(function () {
+  $("#saveData").off("click").on("click", function () {
+    var MedicineName = $("#MedicineName").val().trim();
+    var dosage = $("#dosage").val().trim();
+    var baEating = $("#baEating").val().trim();
+
+    const timeInputs = document.querySelectorAll('input[name="medicinetime[]"]');
+    let medtime = Array.from(timeInputs)
+      .map(input => input.value)
+      .filter(value => value !== '')
+      .join(', ');
+
+    // Clear old alerts
+    $("#alertContainer").html('');
+
+    if (MedicineName && dosage && baEating && medtime) {
+      const row = `
+      <tr class="bg-white border-b hover:bg-gray-50">
+        <td class="px-6 py-4 font-medium text-gray-900">${MedicineName}</td>
+        <td class="px-6 py-4">${dosage}</td>
+        <td class="px-6 py-4">${medtime}</td>
+        <td class="px-6 py-4">${baEating}</td>
+        <td class="px-6 py-4">
+          <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs delete-button">Delete</button>
+        </td>
+      </tr>`;
+      $("#tbod").append(row);
+
+      // Reset inputs
+      $("#MedicineName").val('');
+      $("#dosage").val('');
+      $("#baEating").val('');
+      $("input[name='medicinetime[]']").val('');
+
+      // Close modal (HTML <dialog>)
+      $("#addMedicationModal")[0].close();
+
+      // Show success alert
+  const successAlert = `
+  <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded-md text-sm max-w-md w-full sm:w-auto" role="alert">
+    ✅ Appointment added successfully!
+  </div>`;
+$("#alertContainer").html(successAlert);
+
+
+
+    } else {
+      // Show error alert
+  const errorAlert = `
+  <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-md text-sm max-w-md w-full sm:w-auto" role="alert">
+    ⚠️ Please fill in all the fields before saving.
+  </div>`;
+$("#alertContainer").html(errorAlert);
+
+
+    }
+
+    // Optional: Auto-hide alert after 3 sec
+    setTimeout(() => {
+      $("#alertContainer").html('');
+    }, 3000);
+  });
+});
+
+</script>
+
+
+<script>
+  function addTimeSelect() {
+  const container = document.getElementById("time-fields");
+
+  // أنشئ عنصر div جديد يحتوي على input
+  const newTimeField = document.createElement("div");
+  newTimeField.className = "mb-2";
+  newTimeField.innerHTML = `
+    <input type="time" name="medicinetime[]" class="w-full border rounded px-3 py-2 text-sm" />
+  `;
+
+  // أضف العنصر داخل container
+  container.appendChild(newTimeField);
+}
+
+
+</script>
+
+<script>
+   $(document).ready(function () {
+            $("#saveAppData").click(function () {
+                var appointmentName = $("#appointmentName").val();
+                var appointmentaddress=$("#appointmentaddress").val();
+                var appointmentdate=$("#appointmentdate").val();
+                var appointmenttime = $("#appointmenttime").val();
+
+
+if (appointmentName && appointmentaddress && appointmentdate && appointmenttime) {
+    
+  var row =` <div class="srv-box col-3">
+              <div class="card rad-10" style="width: 18rem;" >
+                <img class="card-img-top w-100" src="images/3634680.png" alt="Card image cap">
+                <div class="card-body">
+                        <ul>
+                            <li><h1>${appointmentName}</h1></li>
+                            <li><h5>${appointmentaddress}</h5></li>
+                            <li>
+                             <h6>${appointmentdate}</h6> 
+                            </li>
+                            <li><h6>${appointmenttime}</h6></li>
+                            <li>
+                                <button class="btn btn-danger" id="delRecode">Delete</button>
+                            </li>
+                </div>
+              </div>
+            </div>`
+    $("#cardBod").append(row);
+                    $("#appointmentName").val('');
+                    $("#appointmentaddress").val('');
+                    $("#appointmentdate").val('');
+                    $("#appointmenttime").val('');
+                    $('#exampleModal').modal('hide');
+                } 
+                else {
+                    alert("Please fill in all fields.");
+                }
+                
+                  var alertMessagee = `<div class="alert alert-danger mt-3" role="alert">
+                                      Medicine added Sucessfully!
+                                    </div>`;
+             $("#alertAppContainer").append(alertMessagee);
+            });
+        });
+      $(document).on("click", ".delete-button", function () {
+  $(this).closest("tr").remove();
+});
+
+        function toggleSection(section) {
+  section.classList.toggle("open");
+}
+function toggleTip(event, btn) {
+  event.stopPropagation(); 
+
+  const content = btn.nextElementSibling;
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    btn.textContent = btn.textContent.replace("➖", "➕");
+  } else {
+    content.style.display = "block";
+    btn.textContent = btn.textContent.replace("➕", "➖");
+  }
+}
+
+
+</script>
+  <script>
+    function readPage() {
+      const text = document.body.innerText; // Get all visible text
+      const utterance = new SpeechSynthesisUtterance(text);
+      speechSynthesis.cancel(); // Stop any current speech
+      speechSynthesis.speak(utterance); // Speak it
+    }
+  </script>
+  <script>
+  const toggleButton = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('bg-light');
+    body.classList.toggle('text-dark');
+    body.classList.toggle('bg-dark');
+    body.classList.toggle('text-light');
+
+    // Optional: change button text/icon
+    if (body.classList.contains('bg-dark')) {
+      toggleButton.textContent = '☀️ Light Mode';
+      toggleButton.classList.remove('btn-outline-secondary');
+      toggleButton.classList.add('btn-outline-light');
+    } else {
+      toggleButton.textContent = '🌙 Dark Mode';
+      toggleButton.classList.remove('btn-outline-light');
+      toggleButton.classList.add('btn-outline-secondary');
+    }
+  });
+  function logout() {
+     window.location.href = "login.html";
+    }
+</script>
+<script>
+  function openImageOptions() {
+    // Trigger the hidden input
+    document.getElementById('qrInput').click();
+  }
+
+  function handleImage(input) {
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+
+      // You can now use this image file for your QR code scanner or preview
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        console.log("Image uploaded or captured:", e.target.result);
+        // You can process it here or show it in an <img> tag
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+<script>
+  function saveAppointment() {
+    const nameInput = document.getElementById("appointmentName");
+    const addressInput = document.getElementById("appointmentAddress");
+    const dateInput = document.getElementById("appointmentDate");
+    const timeInput = document.getElementById("appointmentTime");
+
+    const errName = document.getElementById("errName");
+    const errAddress = document.getElementById("errAddress");
+    const errDate = document.getElementById("errDate");
+    const errTime = document.getElementById("errTime");
+
+    let valid = true;
+
+    // name
+    if (nameInput.value.trim() === "") {
+      nameInput.classList.add("border-red-500");
+      errName.classList.remove("hidden");
+      valid = false;
+    } else {
+      nameInput.classList.remove("border-red-500");
+      errName.classList.add("hidden");
+    }
+
+    // address
+    if (addressInput.value.trim() === "") {
+      addressInput.classList.add("border-red-500");
+      errAddress.classList.remove("hidden");
+      valid = false;
+    } else {
+      addressInput.classList.remove("border-red-500");
+      errAddress.classList.add("hidden");
+    }
+
+    // date
+    if (dateInput.value === "") {
+      dateInput.classList.add("border-red-500");
+      errDate.classList.remove("hidden");
+      valid = false;
+    } else {
+      dateInput.classList.remove("border-red-500");
+      errDate.classList.add("hidden");
+    }
+
+    // time
+    if (timeInput.value === "") {
+      timeInput.classList.add("border-red-500");
+      errTime.classList.remove("hidden");
+      valid = false;
+    } else {
+      timeInput.classList.remove("border-red-500");
+      errTime.classList.add("hidden");
+    }
+
+    if (!valid) return;
+
+    // إذا البيانات كاملة:
+    const cardHTML = `
+      <div class="min-w-[300px] bg-white rounded-xl shadow-md p-4 flex-shrink-0">
+        <img src="images/3634680.png" alt="Card image" class="w-full h-32 object-cover rounded-md mb-4" />
+        <ul class="space-y-1 text-sm">
+          <li><h1 class="text-xl font-semibold">${nameInput.value}</h1></li>
+          <li><h5 class="text-gray-600">${addressInput.value}</h5></li>
+          <li><h6 class="text-gray-500">${dateInput.value}</h6></li>
+          <li><h6 class="text-gray-500">${timeInput.value}</h6></li>
+          <li>
+            <button onclick="this.closest('div').remove()"
+              class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded mt-2">
+              Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    `;
+
+    document.getElementById("cardBod").insertAdjacentHTML("beforeend", cardHTML);
+    document.getElementById("appointmentModal").close();
+
+    // تنظيف الحقول
+    nameInput.value = "";
+    addressInput.value = "";
+    dateInput.value = "";
+    timeInput.value = "";
+  }
+</script>
+
+
+  </body>
+</html>
