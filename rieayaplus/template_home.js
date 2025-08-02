@@ -9,7 +9,7 @@ class SpecialHeader extends HTMLElement {
           <a href="">
             <img
               class="w-[100px] h-[100px] object-contain"
-              src="Images/logo.png"
+              src="images/logo.png"
               alt="logo" />
           </a>
         </div>
