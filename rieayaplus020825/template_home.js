@@ -37,27 +37,27 @@ class SpecialHeader extends HTMLElement {
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-100 text-white">
-                <a href="#services">from our seniors </a>
+                <a href="#from_our_seniors2">from our seniors </a>
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-150 text-white">
-                <a href="#reportss">Medication Reminder</a>
+                <a href="#Medication_Reminder2">Medication Reminder</a>
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-150 text-white">
-                <a href="#tenders">Appointments Reminder</a>
+                <a href="#Appointments_Reminder2">Appointments Reminder</a>
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-200 text-white">
-                <a href="#achievements">Entertainment</a>
+                <a href="#Entertainment2">Entertainment</a>
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-200 text-white">
-                <a href="#feedbacks">HEALTHY LIFE</a>
+                <a href="#HEALTHY_LIFE2">HEALTHY LIFE</a>
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-200 text-white">
-                <a href="#myReports"> feedback</a>
+                <a href="#FEEDBACK2"> feedback</a>
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-300 text-white">

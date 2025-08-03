@@ -338,7 +338,7 @@ justify-content: center;
 align-items: center;
 
 z-index: 1;
-border: solid 2px #CEB579;
+border: solid 2px #91d4f0;
 border-radius: 10px;
 /* box-shadow: 0px 3px 40px #CEB579; */
 transition: .7s;
@@ -371,7 +371,7 @@ transition: .8s;
 
 transform: translateY(-100px);
 
-box-shadow: 0 3px 40px #CEB579;
+box-shadow: 0 3px 40px #a4d9f0;
 
 }
 
@@ -399,7 +399,7 @@ left: 50%;
 
 transform: translateX(-50%);
 
-background: #CEB579;
+background: #90d1ed;
 
 }
 
