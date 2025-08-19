@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    @keyframes fadeIn {from {opacity:0; transform: translateY(-10px);} to {opacity:1; transform: translateY(0);} }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-[#7BCDF0] to-[#5fb8db] min-h-screen flex items-center justify-center p-4">
+  <!-- Card -->
+  <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full p-6 sm:p-8 transition-all duration-300 animate-fade-in">
+    <!-- Back button -->
+    <a
+      href="index.html"
+      class="absolute left-4 top-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#7BCDF0] hover:bg-[#65b9de] text-white shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7BCDF0]"
+      aria-label="Back to home"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+      </svg>
+      Back
+    </a>
+
+    <div class="flex flex-col md:flex-row">
+      <!-- Sidebar -->
+      <div class="md:w-1/3 text-center mb-8 md:mb-0">
+        <img src="https://i.pravatar.cc/300?img=65" alt="Profile Picture" class="rounded-full w-44 h-44 mx-auto mb-4 border-4 border-[#7BCDF0] dark:border-[#5fb8db] transition-transform duration-300 hover:scale-105 object-cover" />
+        <h1 id="displayName" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0f3a4a] dark:text-white mb-1">Salem Haj</h1>
+        <p id="displayAge" class="text-lg sm:text-xl text-gray-700 dark:text-gray-300">Age: <span>72</span> years</p>
+        <button id="editBtn" class="mt-5 inline-flex items-center gap-2 bg-[#7BCDF0] hover:bg-[#65b9de] active:bg-[#4da3c7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7BCDF0] text-white text-base sm:text-lg px-5 py-3 rounded-xl shadow-lg transition-colors duration-200">
+          <!-- Pencil icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L6 11.172V14h2.828l8.586-8.586a2 2 0 000-2.828z"/><path fill-rule="evenodd" d="M4 16a2 2 0 002 2h8a2 2 0 002-2V9a1 1 0 112 0v7a4 4 0 01-4 4H6a4 4 0 01-4-4V6a4 4 0 014-4h7a1 1 0 010 2H6a2 2 0 00-2 2v10z" clip-rule="evenodd"/></svg>
+          Edit Profile
+        </button>
+      </div>
+
+      <!-- Main -->
+      <div class="md:w-2/3 md:pr-8 md:pl-0">
+        <h2 class="text-xl font-semibold text-[#7BCDF0] dark:text-[#7BCDF0] mb-3">Basic Information</h2>
+        <ul class="space-y-3 text-gray-800 dark:text-gray-200 mb-8 text-lg">
+          <li class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-[#7BCDF0]" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <span id="displayEmail">Email: salem.haj@example.com</span>
+          </li>
+          <li class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-[#7BCDF0]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            <span id="displayCity">City: Amman, Jordan</span>
+          </li>
+        </ul>
+
+        <h2 class="text-xl font-semibold text-[#7BCDF0] dark:text-[#7BCDF0] mb-3">About Me</h2>
+        <p id="displayAbout" class="text-gray-800 dark:text-gray-200 leading-8 text-lg">
+          Retired, family-oriented, and passionate about reading and morning walks. With over 35 years of experience in education, I now enjoy spending time with my grandchildren and learning to use modern apps for communication and news. My goal is to stay healthy, mentally sharp, and physically active.
+        </p>
+
+        <h2 class="text-xl font-semibold text-[#7BCDF0] dark:text-[#7BCDF0] mt-8 mb-3">Skills & Hobbies</h2>
+        <div id="skillsWrap" class="flex flex-wrap gap-2 mb-2">
+          <span class="skill-chip">Reading</span>
+          <span class="skill-chip">Walking</span>
+          <span class="skill-chip">Brain Games</span>
+          <span class="skill-chip">Gardening</span>
+        </div>
+        <p class="text-sm text-gray-500 dark:text-gray-400">(You can edit these in the Edit Profile window)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Backdrop -->
+  <div id="editModal" class="hidden fixed inset-0 z-50">
+    <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
+
+    <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-2xl rounded-2xl bg-white dark:bg-gray-900 shadow-2xl ring-1 ring-black/5">
+        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
+          <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-[#0f3a4a] dark:text-white">Edit Profile</h3>
+          <button id="closeModal" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Close window">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+
+        <form id="editForm" class="px-6 pt-4 pb-6 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</span>
+              <input id="nameInput" type="text" required class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-[#7BCDF0] focus:ring-[#7BCDF0] p-3 text-base" />
+            </label>
+            <label class="block">
+              <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Age</span>
+              <input id="ageInput" type="number" min="1" max="120" required class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-[#7BCDF0] focus:ring-[#7BCDF0] p-3 text-base" />
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</span>
+            <input id="emailInput" type="email" required class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-[#7BCDF0] focus:ring-[#7BCDF0] p-3 text-base" />
+          </label>
+
+          <label class="block">
+            <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">About Me</span>
+            <textarea id="aboutInput" rows="5" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-[#7BCDF0] focus:ring-[#7BCDF0] p-3 text-base"></textarea>
+          </label>
+
+          <label class="block">
+            <span class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Skills/Hobbies (separate with commas)</span>
+            <input id="skillsInput" type="text" placeholder="Example: Reading, Walking, Chess" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:border-[#7BCDF0] focus:ring-[#7BCDF0] p-3 text-base" />
+          </label>
+
+          <div class="flex items-center justify-end gap-3 pt-2">
+            <button type="button" id="cancelBtn" class="px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100">Cancel</button>
+            <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#7BCDF0] hover:bg-[#65b9de] text-white font-semibold shadow">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+
+    const displayName = document.getElementById('displayName');
+    const displayAge = document.getElementById('displayAge').querySelector('span');
+    const displayEmail = document.getElementById('displayEmail');
+    const displayAbout = document.getElementById('displayAbout');
+    const skillsWrap = document.getElementById('skillsWrap');
+
+    const editBtn = document.getElementById('editBtn');
+    const editModal = document.getElementById('editModal');
+    const closeModal = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const form = document.getElementById('editForm');
+
+    const nameInput = document.getElementById('nameInput');
+    const ageInput = document.getElementById('ageInput');
+    const emailInput = document.getElementById('emailInput');
+    const aboutInput = document.getElementById('aboutInput');
+    const skillsInput = document.getElementById('skillsInput');
+
+    const openModal = () => {
+      nameInput.value = displayName.textContent.trim();
+      ageInput.value = parseInt(displayAge.textContent.trim()) || '';
+      const emailText = displayEmail.textContent.replace('Email:', '').trim();
+      emailInput.value = emailText;
+      aboutInput.value = displayAbout.textContent.trim();
+      const chips = [...skillsWrap.querySelectorAll('.skill-chip')].map(s=>s.textContent.trim());
+      skillsInput.value = chips.join(', ');
+
+      editModal.classList.remove('hidden');
+      setTimeout(()=> nameInput.focus(), 50);
+    };
+
+    const closeModalFn = () => {
+      editModal.classList.add('hidden');
+    };
+
+    editBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFn);
+    cancelBtn.addEventListener('click', closeModalFn);
+
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && !editModal.classList.contains('hidden')) closeModalFn();
+    });
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!emailInput.validity.valid){
+        alert('Please enter a valid email');
+        return;
+      }
+
+      displayName.textContent = nameInput.value.trim() || 'No Name';
+      displayAge.textContent = (ageInput.value ? parseInt(ageInput.value,10) : '—');
+      displayEmail.textContent = 'Email: ' + (emailInput.value.trim() || '—');
+      displayAbout.textContent = aboutInput.value.trim() || '—';
+
+      const skills = skillsInput.value
+        .split(/[,،]/)
+        .map(s=>s.trim())
+        .filter(Boolean);
+      skillsWrap.innerHTML = '';
+      if(skills.length){
+        skills.forEach(s=>{
+          const span = document.createElement('span');
+          span.className = 'skill-chip';
+          span.textContent = s;
+          skillsWrap.appendChild(span);
+        });
+      }
+
+      closeModalFn();
+    });
+
+    const applyChipStyles = () => {
+      document.querySelectorAll('.skill-chip').forEach(tag=>{
+        tag.classList.add('px-3','py-1','rounded-full','text-sm','transition-colors','duration-200','border','border-[#7BCDF0]','bg-[#7BCDF0]/10','text-[#0f3a4a]');
+        tag.addEventListener('mouseover', ()=>{
+          tag.classList.remove('bg-[#7BCDF0]/10','text-[#0f3a4a]');
+          tag.classList.add('bg-[#7BCDF0]','text-white','border-[#65b9de]');
+        });
+        tag.addEventListener('mouseout', ()=>{
+          tag.classList.remove('bg-[#7BCDF0]','text-white','border-[#65b9de]');
+          tag.classList.add('bg-[#7BCDF0]/10','text-[#0f3a4a]');
+        });
+      });
+    };
+
+    const observer = new MutationObserver(applyChipStyles);
+    observer.observe(skillsWrap, { childList: true });
+    applyChipStyles();
+  </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Memories — Upload • View • Delete</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    @keyframes fadeIn {from {opacity:0; transform: translateY(6px);} to {opacity:1; transform: translateY(0);} }
+    .animate-fade-in { animation: fadeIn 0.35s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#7BCDF0] to-[#5fb8db] min-h-screen p-4">
+  <main class="max-w-6xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6 sm:p-8 animate-fade-in">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0f3a4a] dark:text-white">My Memories</h1>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">Upload your photos, see them here, and delete what you don't need — stored locally in this browser.</p>
+      </div>
+      <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#7BCDF0] hover:bg-[#65b9de] text-white shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        Back
+      </a>
+    </div>
+
+    <!-- Uploader -->
+    <section class="mb-6">
+      <div id="dropZone" class="relative flex flex-col items-center justify-center p-8 border-2 border-dashed rounded-2xl bg-[#7BCDF0]/10 border-[#7BCDF0] hover:bg-[#7BCDF0]/20 transition cursor-pointer text-center">
+        <input id="fileInput" type="file" accept="image/*" multiple class="absolute inset-0 opacity-0 cursor-pointer" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-[#0f3a4a]" viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a2 2 0 00-2 2v8a2 2 0 002 2h4l2 2 2-2h4a2 2 0 002-2V5a2 2 0 00-2-2H3z"/></svg>
+        <p class="mt-2 text-gray-800 dark:text-gray-200 font-medium">Click to choose or drag & drop images here</p>
+        <p class="text-xs text-gray-600 dark:text-gray-400">Supports PNG / JPG / WebP</p>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section>
+      <ul id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></ul>
+      <div id="emptyState" class="rounded-xl border border-dashed border-[#7BCDF0] p-8 text-center text-gray-600 dark:text-gray-300 mt-4">
+        No photos yet — add your first one from the box above.
+      </div>
+    </section>
+  </main>
+
+  <!-- Card Template -->
+  <template id="cardTpl">
+    <li class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow">
+      <img data-el="img" alt="memory" class="w-full h-64 object-cover" />
+      <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/60 to-transparent text-white flex items-center justify-between">
+        <input data-el="caption" class="bg-transparent border-0 outline-none w-full placeholder:text-white/70" placeholder="Write a caption (optional)" />
+        <button data-el="delete" class="ms-2 px-3 py-1.5 rounded-lg bg-red-500/90 hover:bg-red-600 text-white text-sm">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <script>
+    // Simple localStorage-based gallery (images saved as Data URLs)
+    // Note: localStorage has limited size (~5–10MB). For many images, we can switch to IndexedDB later.
+
+    const KEY = 'simple_memories_v1';
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('emptyState');
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+
+    function load(){
+      try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
+    }
+    function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+    function setEmpty(v){ v ? empty.classList.remove('hidden') : empty.classList.add('hidden'); }
+
+    function render(){
+      const items = load();
+      grid.innerHTML = '';
+      setEmpty(items.length === 0);
+      const tpl = document.getElementById('cardTpl');
+      items.forEach((it, idx)=>{
+        const node = tpl.content.cloneNode(true);
+        const img = node.querySelector('[data-el="img"]');
+        const cap = node.querySelector('[data-el="caption"]');
+        const del = node.querySelector('[data-el="delete"]');
+        img.src = it.dataUrl;
+        cap.value = it.caption || '';
+        cap.addEventListener('change', ()=>{
+          const arr = load();
+          arr[idx].caption = cap.value.trim();
+          save(arr);
+        });
+        del.addEventListener('click', ()=>{
+          const arr = load();
+          arr.splice(idx, 1);
+          save(arr);
+          render();
+        });
+        grid.appendChild(node);
+      });
+    }
+
+    function handleFiles(files){
+      const arr = load();
+      const list = Array.from(files);
+      if(!list.length) return;
+      let pending = list.length;
+      list.forEach(file => {
+        if(!file.type.startsWith('image/')) { pending--; return; }
+        const r = new FileReader();
+        r.onload = () => {
+          arr.unshift({ dataUrl: r.result, caption: '', name: file.name, created: Date.now() });
+          pending--; if(pending===0){ save(arr); render(); }
+        };
+        r.readAsDataURL(file);
+      });
+    }
+
+    fileInput.addEventListener('change', e => handleFiles(e.target.files));
+    ;['dragenter','dragover'].forEach(ev=> dropZone.addEventListener(ev, e=>{ e.preventDefault(); dropZone.classList.add('ring-2','ring-[#7BCDF0]'); }));
+    ;['dragleave','drop'].forEach(ev=> dropZone.addEventListener(ev, e=>{ e.preventDefault(); dropZone.classList.remove('ring-2','ring-[#7BCDF0]'); }));
+    dropZone.addEventListener('drop', e=> handleFiles(e.dataTransfer.files));
+
+    render();
+  </script>
+</body>
+</html>

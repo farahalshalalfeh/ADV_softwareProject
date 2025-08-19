@@ -61,7 +61,7 @@ class SpecialHeader extends HTMLElement {
               </li>
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-300 text-white">
-                <a href="./profile_settings.html"> Emergency Page </a>
+                <a href="emergency.html"> Emergency Page </a>
               </li>
             </ul>
           </div>
