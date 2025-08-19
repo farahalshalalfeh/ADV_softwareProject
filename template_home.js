@@ -59,6 +59,7 @@ class SpecialHeader extends HTMLElement {
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-200 text-white">
                 <a href="#FEEDBACK2"> feedback</a>
               </li>
+                // <!-- New -->
               <li
                 class="nav-item sm:w-1/2 w-full min-h-[9vh] flex justify-center items-center sm:text-2xl text-lg sm:mb-5 delay-300 text-white">
                 <a href="emergency.html"> Emergency Page </a>
