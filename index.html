@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>RieayaPlus</title>
+<script>
+!function(){
+  var t = localStorage.getItem('theme');
+  if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+}();
+</script>
 
          <link rel="stylesheet" href="src/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
@@ -1097,7 +1105,7 @@ function toggleTip(event, btn) {
       speechSynthesis.speak(utterance); // Speak it
     }
   </script>
-  <script>
+  <!-- <script>
   const toggleButton = document.getElementById('darkModeToggle');
   const body = document.body;
 
@@ -1121,7 +1129,7 @@ function toggleTip(event, btn) {
   function logout() {
      window.location.href = "login.html";
     }
-</script>
+</script> -->
 <script>
   function openImageOptions() {
     // Trigger the hidden input
@@ -1247,7 +1255,7 @@ inputs.forEach((input) => {
   input.addEventListener("blur", blurFunc);
 });
 </script>
-  <script>
+  <!-- <script>
         // Theme toggle functionality
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
@@ -1312,15 +1320,16 @@ inputs.forEach((input) => {
             }
         });
     </script>
-    <!-- New -->
-    <script>
+     New -->
+  <script>
   const profileButton = document.getElementById('profileButton');
   if (profileButton) {
     profileButton.addEventListener('click', () => {
-      console.log('Profile clicked');
+      console.log('Profile button clicked - ready for profile page integration');
     });
   }
 </script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const btn  = document.getElementById('darkModeToggle');
