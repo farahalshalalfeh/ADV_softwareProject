@@ -116,6 +116,25 @@ html:not(.dark), body:not(.dark) {
 .banner .banner-overlay {
   background: transparent !important;
 }
+/* Light mode fix — from our seniors */
+html:not(.dark) #from_our_seniors2 {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) #from_our_seniors2 .card,
+html:not(.dark) #from_our_seniors2 .slide1,
+html:not(.dark) #from_our_seniors2 .slide2,
+html:not(.dark) #from_our_seniors2 .slide1 .content,
+html:not(.dark) #from_our_seniors2 .slide2 .content {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important; /* رمادي خفيف للحدود */
+}
+
+html:not(.dark) #from_our_seniors2 .service_title,
+html:not(.dark) #from_our_seniors2 p,
+html:not(.dark) #from_our_seniors2 a {
+  color: #111827 !important; /* نص غامق واضح */
+}
 
 </style>
   </head>
@@ -1408,5 +1427,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   </body>
 </html>
+
 
 
