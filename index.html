@@ -90,12 +90,39 @@
 .dark .slide2 p {
   color: #f3f4f6 !important; /* gray-200 */
 }
+/* ثبّت الأبيض في الوضع الفاتح */
+html:not(.dark), body:not(.dark) {
+  background: #ffffff !important;
+}
+
+/* تأكيد إضافي للموبايل */
+@media (max-width: 640px) {
+  html:not(.dark), body:not(.dark) {
+    background: #ffffff !important;
+  }
+}
+
+/* لو في أقسام ملوّنة عم تمتد وتباين كأنها خلفية */
+.from_our_seniors:not(.dark *),
+.Medication_Reminder:not(.dark *),
+#Appointments_Reminder2:not(.dark *),
+#Entertainment2:not(.dark *),
+#HEALTHY_LIFE2:not(.dark *),
+.FEEDBACK2:not(.dark *) {
+  background: #ffffff !important;
+}
+
+/* البانر: شيل أي طبقة تغميق بالـ Light */
+.banner .banner-overlay {
+  background: transparent !important;
+}
 
 </style>
   </head>
   
 
-  <body >
+ <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
     <special-header></special-header>
   <!-- New -->
     <!-- Fixed Top Corner Buttons -->
@@ -1381,4 +1408,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   </body>
 </html>
+
 
